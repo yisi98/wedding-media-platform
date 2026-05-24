@@ -490,7 +490,7 @@ A single-event web application for collecting and sharing photos and videos from
 
 ### Confirmed:
 - [x] **Event date**: October 10, 2026
-- [x] **Event password**: `YisiNata2026` (for guest registration)
+- [x] **Event password**: Configured in environment variables (not in git)
 - [x] **Admin accounts**: Multiple admins supported
 - [x] **Development timeline**: 16 weeks available (May 24 → Sep 15), 14-16 weeks needed
 - [x] **Hard deadline**: September 15, 2026 (all development complete)

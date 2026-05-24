@@ -239,7 +239,7 @@
 - [ ] Real-time monitoring dashboard
 - [ ] Backup verification
 - [ ] Performance metrics tracking
-- [ ] Guest support (event password: `YisiNata2026`)
+- [ ] Guest support (event password distributed via secure channel)
 
 ### Phase 9: Post-Event — NOT STARTED
 - [ ] Disable uploads (archive mode)
@@ -252,8 +252,8 @@
 - [ ] Decommission or archive infrastructure
 
 ## Open Questions
-- [x] **Wedding event date**: October 10, 2026 (20 weeks from now)
-- [x] **Event password**: `YisiNata2026` (for guest registration)
+- [x] **Wedding event date**: October 10, 2026
+- [x] **Event password**: Set (stored securely, not in git)
 - [x] **Admin accounts**: Multiple admins supported
 - [ ] **Domain name**: TBD (will configure before deployment)
 - [ ] **AliCloud details**: TBD (will set up closer to deployment)
@@ -274,7 +274,7 @@
 | 2026-05-24 | Build full-featured app (not MVP) | User decision |
 | 2026-05-24 | Infinite scroll gallery with lightbox | Analysis |
 | 2026-05-24 | Wedding date: October 10, 2026 | User input |
-| 2026-05-24 | Event password: YisiNata2026 | User input |
+| 2026-05-24 | Event password configured (not in git) | Security |
 | 2026-05-24 | Multiple admin accounts supported | User input |
 | 2026-05-24 | AliCloud setup deferred until deployment phase | User decision |
 | 2026-05-24 | Hard deadline: September 15, 2026 (all complete) | User requirement |
@@ -299,7 +299,7 @@ Append a short entry per session.
 - **Timeline confirmed**: Wedding October 10, 2026
 - **Hard deadline**: September 15, 2026 (all development complete)
 - Time available: 16 weeks, Development needed: 14-16 weeks ⚠️ Tight schedule
-- Event password set: `YisiNata2026`
+- Event password configured (stored securely in .env, not in git)
 - Multiple admin accounts will be created
 - AliCloud setup deferred to Phase 7 (Sep 1-15)
 - Next: Setup local dev environment (Docker Compose) then start Phase 2

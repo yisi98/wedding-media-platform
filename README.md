@@ -18,7 +18,7 @@ A password-protected web app designed for **one wedding event**, allowing all at
 ## 🏗️ Architecture
 
 - **Frontend**: Next.js 14+ with TypeScript, TailwindCSS, shadcn/ui, next-i18next
-- **Backend**: FastAPI (Python 3.11+) with async support
+- **Backend**: FastAPI (Python 3.12+) with async support, managed by uv
 - **Database**: PostgreSQL 15+ (AliCloud RDS) with SQLAlchemy ORM
 - **Storage**: AliCloud OSS (Object Storage Service) for media files
 - **Cache**: Redis 7+ (ApsaraDB for Redis) for sessions and caching
@@ -33,18 +33,23 @@ See `docs/architecture/ARCHITECTURE.md` and `docs/PRODUCT_SPEC.md` for details.
 This project uses **agentic coding** with comprehensive documentation:
 
 ### Core Documentation
-- `docs/PRODUCT_SPEC.md` - **Product requirements and specifications**
+- `docs/PRODUCT_SPEC.md` - **Product requirements and specifications** ([HTML version](docs/PRODUCT_SPEC.html))
 - `docs/GETTING_STARTED.md` - Start here for agentic coding approach
 - `docs/architecture/ARCHITECTURE.md` - System architecture
 - `docs/architecture/data-models.md` - Database schema
 - `docs/CODING_STANDARDS.md` - Code quality guidelines
 - `docs/TESTING_STRATEGY.md` - Testing approach
 - `docs/PROJECT_STRUCTURE.md` - File organization
+- `README_SETUP.md` - **Development environment setup guide**
+- `GIT_GUIDE.md` - Git workflow and commit guidelines
+- `progress.md` - Project progress tracker
 
 ### Architecture Decision Records (ADRs)
-- `docs/adr/001-technology-stack.md` - Tech stack choices
-- `docs/adr/002-authentication-strategy.md` - Auth implementation
-- `docs/adr/003-media-storage-strategy.md` - Media handling
+- `docs/adr/001-technology-stack.md` - Tech stack (FastAPI, Next.js, PostgreSQL, Redis)
+- `docs/adr/002-authentication-strategy.md` - Password-based auth (revised)
+- `docs/adr/003-media-storage-strategy.md` - AliCloud OSS storage (revised)
+- `docs/adr/004-internationalization-strategy.md` - Multi-language (EN/ZH/RU)
+- `docs/adr/005-duplicate-detection-strategy.md` - SHA-256 hash-based deduplication
 
 ### Workflows (`.windsurf/workflows/`)
 - `setup-environment.md` - Development setup
@@ -55,56 +60,45 @@ This project uses **agentic coding** with comprehensive documentation:
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Python 3.11+
-- Node.js 18+
-- Docker & Docker Compose
+- **uv** (Python package manager) - [Install](https://docs.astral.sh/uv/)
+- Node.js 20+
+- Docker Desktop
 - Git
+
+**Note**: uv will automatically install Python 3.12 if needed.
 
 ### Setup
 
-1. **Clone the repository**
-```bash
-git clone <repository-url>
-cd wedding-media-platform
+**See `README_SETUP.md` for detailed setup instructions.**
+
+#### Quick Start:
+
+1. **Start infrastructure**
+```powershell
+docker-compose up -d
 ```
 
-2. **Use the setup workflow**
-```bash
-# In Cascade, type:
-/setup-environment
+2. **Backend setup**
+```powershell
+cd backend
+uv sync                    # Install dependencies
+copy .env.example .env     # Configure environment
+uv run alembic upgrade head  # Run migrations
+uv run uvicorn app.main:app --reload  # Start server
 ```
 
-Or manually:
-
-3. **Backend Setup**
-```bash
-python -m venv .venv
-.venv\Scripts\activate  # Windows
-pip install -r backend/requirements.txt
-```
-
-4. **Frontend Setup**
-```bash
+3. **Frontend setup**
+```powershell
 cd frontend
 npm install
-```
-
-5. **Environment Variables**
-```bash
-cp backend/.env.example backend/.env
-cp frontend/.env.example frontend/.env.local
-```
-
-6. **Start Development**
-```bash
-# Terminal 1: Backend
-cd backend
-python manage.py runserver
-
-# Terminal 2: Frontend
-cd frontend
+copy .env.example .env.local
 npm run dev
 ```
+
+**Access**:
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:8000
+- API Docs: http://localhost:8000/docs
 
 ## 🤖 Agentic Coding Approach
 
@@ -138,12 +132,14 @@ This project is designed for agentic coding with AI assistants like Cascade:
 
 ## 🧪 Testing
 
-```bash
+```powershell
 # Backend tests
-pytest --cov=app
+uv run pytest
+uv run pytest --cov=app --cov-report=html
 
 # Frontend tests
 npm test
+npm run test:coverage
 
 # E2E tests
 npm run test:e2e
@@ -167,14 +163,25 @@ wedding-media-platform/
 ## 🛠️ Development
 
 ### Code Quality
-```bash
-# Backend
-ruff check backend/
-black backend/
+```powershell
+# Backend (using uv)
+uv run ruff check .
+uv run black .
+uv run mypy app
 
 # Frontend
 npm run lint
 npm run type-check
+```
+
+### Adding Dependencies
+```powershell
+# Backend
+uv add package-name        # Production dependency
+uv add --dev package-name  # Dev dependency
+
+# Frontend
+npm install package-name
 ```
 
 ### Commit Convention
@@ -188,27 +195,43 @@ docs(api): update authentication docs
 
 See `CONTRIBUTING.md` for detailed guidelines.
 
-## 📋 Project Phases
+## 📋 Project Status & Timeline
 
+### Current Status
+- ✅ **Phase 1 Complete**: Foundation & Documentation (May 24, 2026)
+- 🚧 **Phase 2 In Progress**: Core Features Development
+
+### Critical Dates
+- **Hard Deadline**: September 15, 2026 (all development complete)
+- **Wedding Event**: October 10, 2026
+- **Time Remaining**: 16 weeks (tight schedule - 0-2 weeks buffer)
+
+### Project Phases
 - [x] **Phase 1**: Foundation & Documentation ✅
-- [ ] **Phase 2**: Core Features (Auth, Upload, Gallery, i18n, Duplicate Detection)
-- [ ] **Phase 3**: Advanced Features (Reactions, Comments, Search, Filters, Bulk Download)
-- [ ] **Phase 4**: Premium Features (Real-time, AI, PWA, Face Detection)
-- [ ] **Phase 5**: Admin & Analytics (Dashboard, Moderation, User Management)
-- [ ] **Phase 6**: Testing & Optimization (Load testing, Performance, Security)
-- [ ] **Phase 7**: Deployment (AliCloud infrastructure, Staging, Production)
-- [ ] **Phase 8**: Wedding Event (Live monitoring, 150 concurrent users)
-- [ ] **Phase 9**: Post-Event (Archive, Backup, Post-mortem)
+- [ ] **Phase 2**: Core Features (Auth, Upload, Gallery, i18n, Duplicate Detection) - Weeks 1-4
+- [ ] **Phase 3**: Advanced Features (Reactions, Comments, Search, Filters, Bulk Download) - Weeks 5-7
+- [ ] **Phase 4**: Premium Features (Real-time, AI, PWA, Face Detection) - Weeks 8-10
+- [ ] **Phase 5**: Admin & Analytics (Dashboard, Moderation, User Management) - Week 11
+- [ ] **Phase 6**: Testing & Optimization (Load testing, Performance, Security) - Weeks 12-13
+- [ ] **Phase 7**: Deployment (AliCloud infrastructure, Staging, Production) - Week 14
+- [ ] **Phase 8**: Wedding Event (Live monitoring, 150 concurrent users) - Oct 10, 2026
+- [ ] **Phase 9**: Post-Event (Archive, Backup, Post-mortem) - Week after
 
-**Development Timeline**: 12-14 weeks  
-See `docs/PRODUCT_SPEC.md` for detailed feature list and timeline.
+**Development Timeline**: 14-16 weeks (must stay on track!)  
+See `docs/PRODUCT_SPEC.md` or `docs/PRODUCT_SPEC.html` for detailed feature list.
 
 ## 🌏 Deployment & Localization
+
+### Event Details
+- **Wedding Date**: October 10, 2026
+- **Event Password**: Set in environment variables (see `.env.example`)
+- **Expected Users**: ~150 concurrent users
+- **Admin Accounts**: Multiple admins supported
 
 ### China-Specific Considerations
 - **Hosting**: AliCloud (mainland China region) for optimal domestic performance
 - **No blocked services**: No dependencies on Google, Facebook, AWS, or other blocked services
-- **ICP filing**: Required for production deployment in China
+- **ICP filing**: Required for production deployment in China (TBD)
 - **CDN**: AliCloud CDN for media delivery
 - **Languages**: Simplified Chinese (primary), English, Russian
 
@@ -216,7 +239,7 @@ See `docs/PRODUCT_SPEC.md` for detailed feature list and timeline.
 - **Concurrent users**: 150 simultaneous users
 - **Page load**: < 3 seconds on 4G
 - **API response**: < 500ms (p95)
-- **Storage**: Support up to 50GB total media
+- **Storage**: Support up to 50GB total media (~7,500 photos)
 
 ## 🤝 Contributing
 

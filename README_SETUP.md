@@ -101,7 +101,16 @@ uv sync --all-extras
 copy .env.example .env
 ```
 
-Edit `.env` and update if needed (defaults should work for local dev).
+Edit `.env` and set required secrets:
+```env
+# REQUIRED: Set event password hash
+EVENT_PASSWORD_HASH=<bcrypt-hash-of-password>
+
+# REQUIRED: Generate random secret key
+SECRET_KEY=<random-string-min-32-chars>
+```
+
+**Security Note**: Never commit `.env` to git. See `SECURITY.md` for details on generating password hashes.
 
 #### 4. Database Setup
 ```powershell
