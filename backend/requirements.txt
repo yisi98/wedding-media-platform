@@ -27,7 +27,7 @@ celery==5.3.6
 flower==2.0.1
 
 # Image Processing
-Pillow==10.3.0  # Security fix: CVE-2024-28219
+Pillow==12.2.0  # Security fix: CVE-2024-28219, CVE-2026-25990, CVE-2026-40192, CVE-2026-42311
 python-magic==0.4.27
 
 # Video Processing (requires FFmpeg installed on system)

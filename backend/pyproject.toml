@@ -20,7 +20,7 @@ dependencies = [
     "oss2==2.18.4",
     "celery==5.3.6",
     "flower==2.0.1",
-    "Pillow==10.3.0",  # Fixed: CVE-2024-28219
+    "Pillow==12.2.0",  # Fixed: CVE-2024-28219, CVE-2026-25990, CVE-2026-40192, CVE-2026-42311
     "python-magic==0.4.27",
     "ffmpeg-python==0.2.0",
     "Babel==2.14.0",

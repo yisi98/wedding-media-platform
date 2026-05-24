@@ -26,20 +26,28 @@
   - Fixed: 0.0.27
 - **Action Taken**: Updated to 0.0.27 (fixes all vulnerabilities)
 
-#### 3. Pillow: CVE-2024-28219 (HIGH)
-- **Severity**: HIGH
-- **Issue**: Buffer overflow in _imagingcms.c
-- **Affected Version**: 10.2.0
-- **Fixed Version**: 10.3.0
-- **Action Taken**: Updated to 10.3.0
+#### 3. Pillow: Multiple HIGH Vulnerabilities
+- **CVE-2024-28219**: Buffer overflow in _imagingcms.c
+  - Affected: 10.2.0
+  - Fixed: 10.3.0
+- **CVE-2026-25990**: Out-of-bounds write via specially crafted PSD image
+  - Affected: 10.3.0
+  - Fixed: 12.1.1
+- **CVE-2026-40192**: Denial of Service via decompression bomb in FITS image
+  - Affected: 10.3.0
+  - Fixed: 12.2.0
+- **CVE-2026-42311**: Additional vulnerability in image processing
+  - Affected: 10.3.0
+  - Fixed: 12.2.0
+- **Action Taken**: Updated to 12.2.0 (fixes all vulnerabilities)
 
 ---
 
 ## Summary
 
-**Total Vulnerabilities Fixed**: 6
+**Total Vulnerabilities Fixed**: 9
 - **Critical**: 1
-- **High**: 5
+- **High**: 8
 
 **Files Updated**:
 - `backend/pyproject.toml`
