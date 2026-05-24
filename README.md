@@ -240,7 +240,7 @@ See `docs/PRODUCT_SPEC.md` or `docs/PRODUCT_SPEC.html` for detailed feature list
 - **Concurrent users**: 150 simultaneous users
 - **Page load**: < 3 seconds on 4G
 - **API response**: < 500ms (p95)
-- **Storage**: Support up to 50GB total media (~7,500 photos)
+- **Storage**: 50GB starting, scalable up to 1TB maximum (AliCloud OSS auto-scaling)
 
 ## 🤝 Contributing
 

@@ -1,0 +1,72 @@
+{
+  "app": {
+    "name": "Wedding Photos",
+    "tagline": "Share your memories"
+  },
+  "nav": {
+    "gallery": "Gallery",
+    "upload": "Upload",
+    "logout": "Log out"
+  },
+  "auth": {
+    "register": "Register",
+    "login": "Log in",
+    "logout": "Log out",
+    "username": "Username",
+    "email": "Email (optional)",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "eventPassword": "Event password",
+    "eventPasswordHint": "Ask the organizer for the event password",
+    "alreadyHaveAccount": "Already have an account?",
+    "noAccount": "Don't have an account?",
+    "loginHere": "Log in here",
+    "registerHere": "Register here",
+    "loggingIn": "Logging in…",
+    "registering": "Registering…"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "empty": "No photos yet. Be the first to upload!",
+    "loading": "Loading…",
+    "loadMore": "Load more",
+    "filterAll": "All",
+    "filterPhotos": "Photos",
+    "filterVideos": "Videos"
+  },
+  "upload": {
+    "title": "Upload Photos & Videos",
+    "dropzone": "Drag & drop files here, or click to select",
+    "dropzoneActive": "Drop files here",
+    "maxImageSize": "Max image size: {{size}}MB",
+    "maxVideoSize": "Max video size: {{size}}MB",
+    "acceptedFormats": "JPEG, PNG, HEIC, WebP, MP4, MOV",
+    "uploading": "Uploading…",
+    "processing": "Processing…",
+    "done": "Done",
+    "error": "Error",
+    "duplicate": "Duplicate detected",
+    "duplicateMessage": "This file already exists in the gallery.",
+    "skipFile": "Skip",
+    "uploadAnyway": "Upload anyway",
+    "uploadMore": "Upload more",
+    "viewGallery": "View gallery",
+    "totalProgress": "{{done}} of {{total}} uploaded"
+  },
+  "errors": {
+    "invalidEventPassword": "Invalid event password",
+    "usernameTaken": "Username already taken",
+    "invalidCredentials": "Invalid username or password",
+    "fileTooLarge": "File is too large",
+    "fileTypeNotAllowed": "File type not supported",
+    "uploadFailed": "Upload failed. Please try again.",
+    "networkError": "Network error. Check your connection.",
+    "unknown": "Something went wrong. Please try again."
+  },
+  "language": {
+    "select": "Language",
+    "en": "English",
+    "zh": "中文",
+    "ru": "Русский"
+  }
+}

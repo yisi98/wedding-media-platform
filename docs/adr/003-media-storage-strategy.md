@@ -7,11 +7,11 @@ Superseded by this revision (2026-05-24)
 
 ## Context
 The Wedding Media Platform (single-event, ~150 users) needs to handle:
-- Photos and videos from wedding attendees (estimate: 150 users × 50 photos × 2MB = ~15GB)
+- Photos and videos from wedding attendees (estimate: 150 users × 50 photos × 2MB = ~15GB baseline)
 - Multiple image sizes for different use cases (thumbnails, optimized, original)
 - Video transcoding for web playback (optional for MVP)
 - Fast delivery of media to users in China and internationally
-- Cost-effective storage (target: < 50GB total)
+- **Storage capacity**: Start with 50GB, scalable up to 1TB maximum
 - **Deployment on AliCloud** (mainland China) for optimal domestic performance
 
 ## Decision
