@@ -27,12 +27,13 @@ Runs on every push and pull request to `main` and `develop` branches.
 
 #### Current Status (Phase 1)
 
-⚠️ **Note**: Backend and frontend checks are currently set to `continue-on-error: true` because:
+⚠️ **Note**: Backend and frontend jobs are **disabled** (`if: false`) because:
 - Phase 1 (Foundation) is complete
 - Phase 2 (Core Features) has not started yet
 - No `backend/app/` or `frontend/src/` code exists yet
+- Building the package fails without source code
 
-Once Phase 2 begins and code is added, these checks will be enforced (remove `continue-on-error`).
+**To enable in Phase 2**: Remove `if: false` from backend and frontend job definitions.
 
 #### Security Checks
 
