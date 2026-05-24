@@ -1,0 +1,84 @@
+{
+  "app": {
+    "name": "Свадебные фото",
+    "tagline": "Делитесь воспоминаниями"
+  },
+  "nav": {
+    "gallery": "Галерея",
+    "upload": "Загрузить",
+    "profile": "Профиль",
+    "logout": "Выйти"
+  },
+  "auth": {
+    "register": "Регистрация",
+    "login": "Войти",
+    "logout": "Выйти",
+    "username": "Имя пользователя",
+    "email": "Email (необязательно)",
+    "password": "Пароль",
+    "confirmPassword": "Подтвердите пароль",
+    "eventPassword": "Пароль мероприятия",
+    "eventPasswordHint": "Попросите организатора сообщить пароль",
+    "alreadyHaveAccount": "Уже есть аккаунт?",
+    "noAccount": "Нет аккаунта?",
+    "loginHere": "Войти",
+    "registerHere": "Зарегистрироваться",
+    "loggingIn": "Вход…",
+    "registering": "Регистрация…"
+  },
+  "gallery": {
+    "title": "Галерея",
+    "empty": "Фото пока нет. Будьте первым!",
+    "loading": "Загрузка…",
+    "loadMore": "Загрузить ещё",
+    "filterAll": "Все",
+    "filterPhotos": "Фото",
+    "filterVideos": "Видео"
+  },
+  "upload": {
+    "title": "Загрузить фото и видео",
+    "dropzone": "Перетащите файлы сюда или нажмите для выбора",
+    "dropzoneActive": "Отпустите для загрузки",
+    "maxImageSize": "Макс. размер фото: {{size}} МБ",
+    "maxVideoSize": "Макс. размер видео: {{size}} МБ",
+    "acceptedFormats": "JPEG, PNG, HEIC, WebP, MP4, MOV",
+    "uploading": "Загрузка…",
+    "processing": "Обработка…",
+    "done": "Готово",
+    "error": "Ошибка",
+    "duplicate": "Обнаружен дубликат",
+    "duplicateMessage": "Этот файл уже есть в галерее.",
+    "skipFile": "Пропустить",
+    "uploadAnyway": "Загрузить всё равно",
+    "uploadMore": "Загрузить ещё",
+    "viewGallery": "Открыть галерею",
+    "totalProgress": "Загружено {{done}} из {{total}}"
+  },
+  "errors": {
+    "invalidEventPassword": "Неверный пароль мероприятия",
+    "usernameTaken": "Имя пользователя уже занято",
+    "invalidCredentials": "Неверное имя пользователя или пароль",
+    "fileTooLarge": "Файл слишком большой",
+    "fileTypeNotAllowed": "Формат файла не поддерживается",
+    "uploadFailed": "Ошибка загрузки. Попробуйте ещё раз.",
+    "networkError": "Ошибка сети. Проверьте подключение.",
+    "unknown": "Что-то пошло не так. Попробуйте ещё раз."
+  },
+  "language": {
+    "select": "Язык",
+    "en": "English",
+    "zh": "中文",
+    "ru": "Русский"
+  },
+  "profile": {
+    "title": "Мой профиль",
+    "username": "Имя пользователя",
+    "email": "Email",
+    "emailPlaceholder": "your@email.com",
+    "language": "Язык интерфейса",
+    "save": "Сохранить",
+    "saving": "Сохранение…",
+    "saved": "Сохранено!",
+    "saveError": "Не удалось сохранить. Попробуйте ещё раз."
+  }
+}

@@ -115,9 +115,10 @@ A single-event web application for collecting and sharing photos and videos from
 - **Image optimization**: Auto-compress for web display (keep original)
 
 #### NFR-2: Scalability
-- **Storage**: Support up to 50GB total media (estimate: 150 users × 50 photos × 2MB avg)
+- **Storage**: Start with 50GB, scalable up to 1TB maximum (estimate: 150 users × 50 photos × 2MB avg = ~15GB baseline)
 - **Horizontal scaling**: Ability to add more server instances if needed
 - **CDN**: Use AliCloud CDN for media delivery
+- **Auto-scaling**: Storage automatically expands as needed, up to 1TB limit
 
 #### NFR-3: Availability & Reliability
 - **Uptime**: 99% during event period (3-day window)

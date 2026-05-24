@@ -3,7 +3,7 @@
 > **Purpose**: Long-horizon state across coding sessions. Agents and humans update this when starting, pausing, or finishing work. Keep it terse — link out for details.
 
 ## Current Focus
-**Active task**: Phase 1 complete, ready for Phase 2
+**Active task**: Phase 2 backend + frontend running locally — next: Celery worker, frontend UI polish, cross-browser test
 **Active phase**: Phase 2 — Core Features Development
 **Project scope**: Full-featured single wedding event app, 150 concurrent users, multi-language (EN/ZH/RU), AliCloud deployment
 **Development approach**: Build complete feature set (not MVP)
@@ -43,14 +43,17 @@
 ### Phase 2: Core Features Development — IN PROGRESS
 
 **Local Development Environment:**
-- [x] Docker Compose setup (PostgreSQL, Redis, MinIO)
-- [x] Backend pyproject.toml with uv (Python 3.12)
-- [x] Frontend package.json with dependencies
-- [x] Development setup guide (README_SETUP.md)
-- [x] .python-version file (3.12)
-- [ ] Test Docker services startup
-- [ ] Verify backend can connect to services
-- [ ] Verify frontend can connect to backend
+- [x] Docker Compose / Podman Compose setup (PostgreSQL, Redis, MinIO) — running ✅
+- [x] Backend deps installed in root `.venv` (Python 3.12)
+- [x] Frontend npm deps installed (Node 24)
+- [x] `backend/.env` configured (WSL IP for Podman containers)
+- [x] Podman containers confirmed healthy
+- [x] Backend connected to PostgreSQL + Redis + MinIO ✅
+- [x] Frontend dev server running at localhost:3000 ✅
+- [x] Alembic migration 0001 applied (all 4 tables created) ✅
+- [x] Admin account seeded (username: admin) ✅
+- [x] End-to-end API smoke test passed (register, /me, gallery, admin login) ✅
+- **Note**: Podman containers on WSL IP 172.24.62.171 (update .env if WSL restarts)
 
 **Backend (Week 1-2):**
 - [ ] Initialize FastAPI project skeleton
@@ -282,6 +285,7 @@
 | 2026-05-24 | AliCloud setup deferred until deployment phase | User decision |
 | 2026-05-24 | Hard deadline: September 15, 2026 (all complete) | User requirement |
 | 2026-05-24 | Security fixes: Updated 3 packages (9 CVEs fixed - 1 CRITICAL, 8 HIGH) | Security audit |
+| 2026-05-24 | Storage: 50GB starting, scalable up to 1TB maximum | User requirement |
 
 ## Blocked / Waiting
 _None_
