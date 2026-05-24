@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Specification: Wedding Media Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        
+        header {
+            border-bottom: 3px solid #2563eb;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #1e40af;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .meta {
+            display: flex;
+            gap: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .status-badge {
+            background: #10b981;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        
+        h2 {
+            color: #1e40af;
+            font-size: 1.8em;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        h3 {
+            color: #2563eb;
+            font-size: 1.3em;
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+        
+        h4 {
+            color: #3b82f6;
+            font-size: 1.1em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .highlight-box {
+            background: #eff6ff;
+            border-left: 4px solid #2563eb;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .warning-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .success-box {
+            background: #d1fae5;
+            border-left: 4px solid #10b981;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+        
+        th {
+            background: #1e40af;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        tr:hover {
+            background: #f9fafb;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .feature-card {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .feature-card h4 {
+            color: #1e40af;
+            margin-top: 0;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 30px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #2563eb;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 20px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -36px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #2563eb;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #2563eb;
+        }
+        
+        .timeline-item.complete::before {
+            background: #10b981;
+            box-shadow: 0 0 0 3px #10b981;
+        }
+        
+        .phase-title {
+            font-weight: 600;
+            color: #1e40af;
+            font-size: 1.1em;
+        }
+        
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .checklist li {
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .checklist li::before {
+            content: '☐';
+            position: absolute;
+            left: 0;
+            color: #9ca3af;
+            font-size: 1.2em;
+        }
+        
+        .checklist li.checked::before {
+            content: '✓';
+            color: #10b981;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        code {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #dc2626;
+        }
+        
+        .toc {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        .toc h3 {
+            margin-top: 0;
+            color: #1e40af;
+        }
+        
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .toc a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+        
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎉 Wedding Media Platform</h1>
+            <div class="meta">
+                <div class="meta-item">
+                    <strong>Version:</strong> 1.0
+                </div>
+                <div class="meta-item">
+                    <strong>Last Updated:</strong> 2026-05-24
+                </div>
+                <div class="meta-item">
+                    <span class="status-badge">Active</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="toc">
+            <h3>📑 Table of Contents</h3>
+            <ul>
+                <li><a href="#executive-summary">1. Executive Summary</a></li>
+                <li><a href="#problem-statement">2. Problem Statement</a></li>
+                <li><a href="#target-users">3. Target Users</a></li>
+                <li><a href="#core-requirements">4. Core Requirements</a></li>
+                <li><a href="#user-stories">5. User Stories & Journeys</a></li>
+                <li><a href="#features">6. Feature Prioritization</a></li>
+                <li><a href="#technical-constraints">7. Technical Constraints</a></li>
+                <li><a href="#success-metrics">8. Success Metrics</a></li>
+                <li><a href="#risks">9. Assumptions & Risks</a></li>
+                <li><a href="#deployment">10. Deployment Strategy</a></li>
+                <li><a href="#timeline">11. Timeline & Milestones</a></li>
+                <li><a href="#open-questions">12. Open Questions</a></li>
+            </ul>
+        </div>
+
+        <section id="executive-summary">
+            <h2>1. Executive Summary</h2>
+            <div class="highlight-box">
+                <p><strong>A single-event web application for collecting and sharing photos and videos from wedding attendees.</strong></p>
+                <p>Designed for ~150 concurrent users across iOS, Android, and PC platforms, with multi-language support (English, Chinese, Russian) and deployment on Chinese cloud infrastructure (AliCloud/AliYun).</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">150</div>
+                    <div class="stat-label">Concurrent Users</div>
+                </div>
+                <div class="stat-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">Languages (EN/ZH/RU)</div>
+                </div>
+                <div class="stat-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <div class="stat-value">50GB</div>
+                    <div class="stat-label">Storage Capacity</div>
+                </div>
+                <div class="stat-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                    <div class="stat-value">Oct 10</div>
+                    <div class="stat-label">Wedding Date 2026</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="problem-statement">
+            <h2>2. Problem Statement</h2>
+            <p><strong>Problem:</strong> Wedding attendees capture hundreds of photos and videos on their personal devices, but there's no centralized, easy way to collect and share all media from the event.</p>
+            
+            <h3>Current Pain Points:</h3>
+            <ul>
+                <li>Guests use various messaging apps (WeChat, WhatsApp) creating fragmented collections</li>
+                <li>No single source of truth for all wedding media</li>
+                <li>Difficult to prevent duplicate uploads</li>
+                <li>Hard to manage and curate content</li>
+                <li>Language barriers for international guests</li>
+            </ul>
+            
+            <div class="success-box">
+                <strong>Solution:</strong> A dedicated web app accessible to all guests via password, supporting all platforms and languages, with admin controls and duplicate detection.
+            </div>
+        </section>
+
+        <section id="target-users">
+            <h2>3. Target Users</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>👥 Primary: Wedding Guests (~150)</h4>
+                    <ul>
+                        <li><strong>Platforms:</strong> iOS (60%), Android (35%), PC (5%)</li>
+                        <li><strong>Languages:</strong> Chinese (70%), English (20%), Russian (10%)</li>
+                        <li><strong>Location:</strong> China mainland + international</li>
+                        <li><strong>Usage:</strong> Intensive during/after wedding (1-3 days)</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>👨‍💼 Secondary: Event Admin (1-2)</h4>
+                    <ul>
+                        <li><strong>Role:</strong> Wedding organizers/couple</li>
+                        <li><strong>Needs:</strong> Content moderation, configuration, analytics</li>
+                        <li><strong>Technical:</strong> Moderate proficiency</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="core-requirements">
+            <h2>4. Core Requirements</h2>
+            
+            <h3>4.1 Functional Requirements</h3>
+            
+            <div class="feature-card">
+                <h4>FR-1: Authentication & Access Control</h4>
+                <ul>
+                    <li><strong>Password-based registration:</strong> Single event password allows anyone to create account</li>
+                    <li><strong>User accounts:</strong> Email/username + password (no OAuth required)</li>
+                    <li><strong>Admin account:</strong> Special admin credentials with elevated privileges</li>
+                    <li><strong>Session management:</strong> Persistent login across devices</li>
+                    <li><strong>Event password:</strong> <code>YisiNata2026</code></li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h4>FR-2: Media Upload</h4>
+                <ul>
+                    <li><strong>Supported formats:</strong>
+                        <ul>
+                            <li>Images: JPEG, PNG, HEIC (iOS), WebP</li>
+                            <li>Videos: MP4, MOV, WebM</li>
+                        </ul>
+                    </li>
+                    <li><strong>File size limits:</strong>
+                        <ul>
+                            <li>Images: Up to 50MB per file</li>
+                            <li>Videos: Up to 500MB per file</li>
+                        </ul>
+                    </li>
+                    <li><strong>Duplicate detection:</strong> SHA-256 hash-based deduplication</li>
+                    <li><strong>Batch upload:</strong> Multiple files at once</li>
+                    <li><strong>Upload progress:</strong> Real-time progress indicator</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h4>FR-3: Media Viewing & Gallery</h4>
+                <ul>
+                    <li>Responsive gallery with infinite scroll</li>
+                    <li>Lazy loading for performance</li>
+                    <li>Lightbox viewer with swipe/keyboard navigation</li>
+                    <li>Filtering by date, uploader, media type</li>
+                    <li>Search by filename, date</li>
+                    <li>Individual or batch download (ZIP)</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h4>FR-4: Admin Functions</h4>
+                <ul>
+                    <li>Content moderation (delete, bulk delete)</li>
+                    <li>User management (view all, disable/enable accounts)</li>
+                    <li>Configuration (change event password, upload limits)</li>
+                    <li>Analytics dashboard (uploads, storage, users, timeline)</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h4>FR-5: Multi-Language Support (i18n)</h4>
+                <ul>
+                    <li><strong>Languages:</strong> English, 中文 (Simplified), Русский</li>
+                    <li>Language switcher on every page</li>
+                    <li>Persistent preference</li>
+                    <li>All UI text and error messages translated</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h4>FR-6: Cross-Platform Compatibility</h4>
+                <ul>
+                    <li>Web-based (no native apps)</li>
+                    <li>Mobile-first responsive design</li>
+                    <li>iOS Safari 14+, Android Chrome 90+</li>
+                    <li>Desktop Chrome, Firefox, Edge, Safari</li>
+                    <li>PWA features (optional)</li>
+                </ul>
+            </div>
+
+            <h3>4.2 Non-Functional Requirements</h3>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Requirement</th>
+                        <th>Target</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Performance</strong></td>
+                        <td>150 concurrent users</td>
+                        <td>Page load < 3s on 4G, API response < 500ms (p95)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Scalability</strong></td>
+                        <td>50GB storage</td>
+                        <td>Support ~7,500 media files (150 users × 50 photos)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Availability</strong></td>
+                        <td>99% uptime</td>
+                        <td>During 3-day event window, no data loss</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Security</strong></td>
+                        <td>HTTPS only</td>
+                        <td>SSL/TLS, password strength, XSS/CSRF protection</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Compliance</strong></td>
+                        <td>China deployment</td>
+                        <td>AliCloud hosting, no blocked services, ICP filing</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="user-stories">
+            <h2>5. User Stories & Journeys</h2>
+            
+            <h3>5.1 Guest User Journey</h3>
+            <ol>
+                <li>Receive invitation with event password via WeChat/WhatsApp</li>
+                <li>Open web app URL on phone browser</li>
+                <li>Register account using event password</li>
+                <li>Upload photos from camera roll (batch upload)</li>
+                <li>Browse all wedding photos from all guests</li>
+                <li>Download favorite photos to device</li>
+                <li>Switch to preferred language (Chinese/English/Russian)</li>
+            </ol>
+
+            <h3>5.2 Admin User Journey</h3>
+            <ol>
+                <li>Login with admin credentials</li>
+                <li>Monitor real-time upload activity</li>
+                <li>Moderate content (delete inappropriate/duplicate photos)</li>
+                <li>Check registered users</li>
+                <li>Close event (disable uploads after wedding)</li>
+                <li>Export all media for archival</li>
+            </ol>
+        </section>
+
+        <section id="features">
+            <h2>6. Feature Prioritization</h2>
+            
+            <div class="warning-box">
+                <strong>⚠️ Development Approach:</strong> Full-featured app (not MVP). All features below will be implemented across 9 phases.
+            </div>
+
+            <h3>Phase 2: Core Features (Weeks 1-4)</h3>
+            <ul class="checklist">
+                <li>Password-based registration + login</li>
+                <li>Admin account with moderation powers</li>
+                <li>Photo/video upload (JPEG, PNG, HEIC, MP4, MOV)</li>
+                <li>Batch upload with progress tracking</li>
+                <li>Duplicate detection (SHA-256)</li>
+                <li>Auto-thumbnail generation</li>
+                <li>Image optimization (WebP conversion)</li>
+                <li>Infinite scroll gallery with lazy loading</li>
+                <li>Lightbox with swipe navigation</li>
+                <li>Multi-language (EN/ZH/RU)</li>
+                <li>Responsive design (mobile/tablet/desktop)</li>
+            </ul>
+
+            <h3>Phase 3: Advanced Features (Weeks 5-7)</h3>
+            <ul class="checklist">
+                <li>Reactions/likes on photos (❤️ 👍 😂)</li>
+                <li>Comments on photos/videos</li>
+                <li>Favorites/bookmarks</li>
+                <li>Filter by date, uploader, media type</li>
+                <li>Search by filename</li>
+                <li>Sort options (newest, most liked, most viewed)</li>
+                <li>Bulk download (ZIP)</li>
+                <li>WeChat share integration</li>
+                <li>Admin analytics dashboard</li>
+            </ul>
+
+            <h3>Phase 4: Premium Features (Weeks 8-10)</h3>
+            <ul class="checklist">
+                <li>Real-time upload notifications (WebSocket)</li>
+                <li>Live activity feed</li>
+                <li>Push notifications</li>
+                <li>Perceptual hashing (similar photo detection)</li>
+                <li>Face detection and grouping</li>
+                <li>Auto-generated albums</li>
+                <li>PWA features (offline mode)</li>
+                <li>Progressive image loading</li>
+                <li>Adaptive video streaming (HLS)</li>
+            </ul>
+        </section>
+
+        <section id="technical-constraints">
+            <h2>7. Technical Constraints</h2>
+            
+            <h3>7.1 Technology Stack</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Technology</th>
+                        <th>Version</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Backend</td>
+                        <td>FastAPI (Python)</td>
+                        <td>3.12+</td>
+                    </tr>
+                    <tr>
+                        <td>Frontend</td>
+                        <td>Next.js (React, TypeScript)</td>
+                        <td>14+</td>
+                    </tr>
+                    <tr>
+                        <td>Database</td>
+                        <td>PostgreSQL</td>
+                        <td>15+</td>
+                    </tr>
+                    <tr>
+                        <td>Cache</td>
+                        <td>Redis</td>
+                        <td>7+</td>
+                    </tr>
+                    <tr>
+                        <td>Storage</td>
+                        <td>AliCloud OSS</td>
+                        <td>S3-compatible</td>
+                    </tr>
+                    <tr>
+                        <td>i18n</td>
+                        <td>next-i18next, gettext</td>
+                        <td>Latest</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>7.2 AliCloud Services</h3>
+            <ul>
+                <li><strong>ECS:</strong> Elastic Compute Service for application servers</li>
+                <li><strong>OSS:</strong> Object Storage Service for media files</li>
+                <li><strong>RDS:</strong> Relational Database Service for PostgreSQL</li>
+                <li><strong>Redis:</strong> ApsaraDB for Redis for caching</li>
+                <li><strong>CDN:</strong> Content delivery for media</li>
+                <li><strong>SLB:</strong> Server Load Balancer for redundancy</li>
+            </ul>
+
+            <div class="warning-box">
+                <h4>⚠️ Blocked Services in China</h4>
+                <p><strong>Avoid dependencies on:</strong></p>
+                <ul>
+                    <li>Google services (Analytics, Fonts, Maps, OAuth)</li>
+                    <li>Facebook services</li>
+                    <li>AWS S3 (use AliCloud OSS)</li>
+                    <li>Cloudflare (use AliCloud CDN)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="success-metrics">
+            <h2>8. Success Metrics</h2>
+            
+            <h3>8.1 Launch Success Criteria</h3>
+            <ul class="checklist">
+                <li>All 150 guests can register and login</li>
+                <li>Average upload success rate > 95%</li>
+                <li>No downtime during peak usage (wedding day)</li>
+                <li>Page load time < 3s on 4G</li>
+                <li>Zero data loss</li>
+                <li>All three languages functional</li>
+            </ul>
+
+            <h3>8.2 Post-Launch Metrics</h3>
+            <ul>
+                <li><strong>Engagement:</strong> % of guests who uploaded at least 1 photo</li>
+                <li><strong>Content:</strong> Total photos/videos uploaded</li>
+                <li><strong>Performance:</strong> Average upload time, API response times</li>
+                <li><strong>Errors:</strong> Upload failure rate, error logs</li>
+                <li><strong>Usage:</strong> Peak concurrent users, storage used</li>
+            </ul>
+        </section>
+
+        <section id="risks">
+            <h2>9. Assumptions & Risks</h2>
+            
+            <h3>9.1 Assumptions</h3>
+            <ul>
+                <li>Users have smartphones with cameras</li>
+                <li>Users have stable internet (4G or WiFi)</li>
+                <li>Event password is shared securely (not leaked publicly)</li>
+                <li>Admin monitors content periodically</li>
+                <li>Wedding event is 1-3 days, then archive mode</li>
+            </ul>
+
+            <h3>9.2 Risks & Mitigations</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Risk</th>
+                        <th>Impact</th>
+                        <th>Probability</th>
+                        <th>Mitigation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>150 concurrent uploads overwhelm server</td>
+                        <td>High</td>
+                        <td>Medium</td>
+                        <td>Load testing, auto-scaling on AliCloud</td>
+                    </tr>
+                    <tr>
+                        <td>Duplicate uploads fill storage</td>
+                        <td>Medium</td>
+                        <td>High</td>
+                        <td>Hash-based deduplication</td>
+                    </tr>
+                    <tr>
+                        <td>Inappropriate content uploaded</td>
+                        <td>Medium</td>
+                        <td>Low</td>
+                        <td>Admin moderation tools</td>
+                    </tr>
+                    <tr>
+                        <td>Event password leaked publicly</td>
+                        <td>High</td>
+                        <td>Low</td>
+                        <td>Admin can change password, disable accounts</td>
+                    </tr>
+                    <tr>
+                        <td>China firewall blocks dependencies</td>
+                        <td>High</td>
+                        <td>Medium</td>
+                        <td>Use AliCloud services only</td>
+                    </tr>
+                    <tr>
+                        <td>Mobile browser compatibility issues</td>
+                        <td>Medium</td>
+                        <td>Medium</td>
+                        <td>Extensive cross-browser testing</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="deployment">
+            <h2>10. Deployment Strategy</h2>
+            
+            <h3>10.1 Development Environment</h3>
+            <ul>
+                <li>Local PC hosting for development</li>
+                <li>Docker Compose (PostgreSQL, Redis, MinIO)</li>
+                <li>Test with 10-20 users before production</li>
+            </ul>
+
+            <h3>10.2 Production Deployment (AliCloud)</h3>
+            <ol>
+                <li><strong>Pre-deployment:</strong> ICP filing, domain, SSL, AliCloud account</li>
+                <li><strong>Infrastructure:</strong> ECS (2x), RDS PostgreSQL, Redis, OSS, CDN, SLB</li>
+                <li><strong>Deployment:</strong> Docker images, migrations, smoke tests, DNS cutover</li>
+                <li><strong>Monitoring:</strong> CloudMonitor, Log Service, error tracking</li>
+            </ol>
+        </section>
+
+        <section id="timeline">
+            <h2>11. Timeline & Milestones</h2>
+            
+            <div class="warning-box">
+                <h4>⚠️ Critical Deadline</h4>
+                <p><strong>Hard Deadline:</strong> September 15, 2026 (all development complete)</p>
+                <p><strong>Wedding Date:</strong> October 10, 2026</p>
+                <p><strong>Time Available:</strong> 16 weeks (May 24 → Sep 15)</p>
+                <p><strong>Development Needed:</strong> 14-16 weeks</p>
+                <p><strong>Buffer:</strong> 0-2 weeks ⚠️ <em>Tight schedule - must stay on track!</em></p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item complete">
+                    <div class="phase-title">✅ Phase 1: Foundation (Complete)</div>
+                    <p>Documentation, ADRs, workflows, coding standards, product spec</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="phase-title">Phase 2: Core Features (Weeks 1-4)</div>
+                    <p>Backend: FastAPI, auth, upload API, duplicate detection, OSS integration</p>
+                    <p>Frontend: Next.js, i18n, upload UI, gallery, lightbox</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="phase-title">Phase 3: Advanced Features (Weeks 5-7)</div>
+                    <p>Reactions, comments, filters, search, bulk download, admin dashboard</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="phase-title">Phase 4: Premium Features (Weeks 8-10)</div>
+                    <p>Real-time, AI/face detection, PWA, adaptive streaming</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="phase-title">Phase 5: Admin & Analytics (Week 11)</div>
+                    <p>Dashboard, moderation tools, user management, export</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="phase-title">Phase 6: Testing & Optimization (Weeks 12-13)</div>
+                    <p>Load testing (150 users), cross-browser, security audit</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="phase-title">Phase 7: Deployment (Week 14)</div>
+                    <p>AliCloud setup, staging, production, smoke tests</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="phase-title">🎉 Phase 8: Wedding Event (Oct 10, 2026)</div>
+                    <p>Live monitoring, admin support, incident response</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="phase-title">Phase 9: Post-Event (Week after)</div>
+                    <p>Archive mode, backup, export, post-mortem</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="open-questions">
+            <h2>12. Open Questions & Answers</h2>
+            
+            <div class="success-box">
+                <h3>✅ Confirmed</h3>
+                <ul class="checklist checked">
+                    <li class="checked"><strong>Event date:</strong> October 10, 2026</li>
+                    <li class="checked"><strong>Event password:</strong> <code>YisiNata2026</code></li>
+                    <li class="checked"><strong>Admin accounts:</strong> Multiple admins supported</li>
+                    <li class="checked"><strong>Hard deadline:</strong> September 15, 2026</li>
+                    <li class="checked"><strong>Development approach:</strong> Full-featured (not MVP)</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <h3>📋 To Be Determined (Before Deployment)</h3>
+                <ul class="checklist">
+                    <li>Domain name (configure in Phase 7)</li>
+                    <li>ICP filing (start 2-4 weeks before deployment)</li>
+                    <li>AliCloud budget (estimate: $50-100/month)</li>
+                    <li>AliCloud credentials (provide in Phase 7)</li>
+                    <li>Backup strategy (post-event retention period)</li>
+                    <li>Email notifications (optional, requires SMTP)</li>
+                    <li>WeChat integration (likely yes for Chinese guests)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>13. References</h2>
+            <ul>
+                <li><strong>Architecture:</strong> <code>docs/architecture/ARCHITECTURE.md</code></li>
+                <li><strong>Data Models:</strong> <code>docs/architecture/data-models.md</code></li>
+                <li><strong>ADR-001:</strong> Technology Stack Selection</li>
+                <li><strong>ADR-002:</strong> Authentication Strategy (password-based)</li>
+                <li><strong>ADR-003:</strong> Media Storage Strategy (AliCloud OSS)</li>
+                <li><strong>ADR-004:</strong> Internationalization Strategy (EN/ZH/RU)</li>
+                <li><strong>ADR-005:</strong> Duplicate Detection Strategy (SHA-256)</li>
+                <li><strong>API Design:</strong> <code>docs/api/API_DESIGN.md</code></li>
+            </ul>
+        </section>
+
+        <footer style="margin-top: 60px; padding-top: 30px; border-top: 2px solid #e5e7eb; text-align: center; color: #666;">
+            <p><strong>Wedding Media Platform</strong> | Product Specification v1.0</p>
+            <p>Last Updated: 2026-05-24 | Status: Active Development</p>
+            <p style="margin-top: 20px; font-size: 0.9em;">
+                <em>Hard Deadline: September 15, 2026 | Wedding Event: October 10, 2026</em>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
