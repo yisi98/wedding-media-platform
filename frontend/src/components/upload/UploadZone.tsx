@@ -2,7 +2,7 @@
 import { useState, useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { sha256File } from "@/lib/hash";
-import { initUpload, uploadToStorage, confirmUpload, isDuplicateWarning } from "@/lib/api/media";
+import { initUpload, uploadFileToBackend, isDuplicateWarning } from "@/lib/api/media";
 import type { UploadFile } from "@/types";
 import UploadFileRow from "./UploadFileRow";
 
@@ -42,12 +42,10 @@ export default function UploadZone() {
         return;
       }
 
-      await uploadToStorage(initResp.upload_url, initResp.upload_fields, file, (pct) =>
+      updateFile(index, { status: "uploading", mediaId: initResp.media_id });
+      await uploadFileToBackend(initResp.media_id, file, (pct) =>
         updateFile(index, { progress: pct })
       );
-
-      updateFile(index, { status: "confirming", mediaId: initResp.media_id });
-      await confirmUpload(initResp.media_id);
       updateFile(index, { status: "done", progress: 100 });
     } catch (err: any) {
       updateFile(index, {
