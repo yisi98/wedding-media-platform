@@ -6,6 +6,7 @@
   "nav": {
     "gallery": "相册",
     "upload": "上传",
+    "profile": "个人设置",
     "logout": "退出登录"
   },
   "auth": {
@@ -68,5 +69,16 @@
     "en": "English",
     "zh": "中文",
     "ru": "Русский"
+  },
+  "profile": {
+    "title": "个人设置",
+    "username": "用户名",
+    "email": "邮箱",
+    "emailPlaceholder": "your@email.com",
+    "language": "偏好语言",
+    "save": "保存更改",
+    "saving": "保存中…",
+    "saved": "已保存！",
+    "saveError": "保存失败，请重试"
   }
 }

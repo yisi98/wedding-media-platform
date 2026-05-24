@@ -6,6 +6,7 @@
   "nav": {
     "gallery": "Gallery",
     "upload": "Upload",
+    "profile": "Profile",
     "logout": "Log out"
   },
   "auth": {
@@ -68,5 +69,16 @@
     "en": "English",
     "zh": "中文",
     "ru": "Русский"
+  },
+  "profile": {
+    "title": "My Profile",
+    "username": "Username",
+    "email": "Email",
+    "emailPlaceholder": "your@email.com",
+    "language": "Preferred language",
+    "save": "Save changes",
+    "saving": "Saving…",
+    "saved": "Saved!",
+    "saveError": "Failed to save. Please try again."
   }
 }

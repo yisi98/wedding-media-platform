@@ -34,6 +34,11 @@ class RefreshRequest(BaseModel):
     refresh_token: str
 
 
+class ProfileUpdateRequest(BaseModel):
+    email: EmailStr | None = None
+    language: LanguagePreference | None = None
+
+
 class UserResponse(BaseModel):
     id: int
     username: str

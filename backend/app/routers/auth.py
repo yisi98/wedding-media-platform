@@ -5,7 +5,7 @@ from app.config import get_settings
 from app.database import get_db
 from app.dependencies import get_current_user
 from app.models.user import User
-from app.schemas.auth import LoginRequest, RefreshRequest, RegisterRequest, TokenResponse, UserResponse
+from app.schemas.auth import LoginRequest, ProfileUpdateRequest, RefreshRequest, RegisterRequest, TokenResponse, UserResponse
 from app.services import auth as auth_service
 
 router = APIRouter(prefix="/auth", tags=["auth"])
@@ -78,4 +78,18 @@ async def logout(
 
 @router.get("/me", response_model=UserResponse)
 async def me(current_user: User = Depends(get_current_user)):
+    return UserResponse.from_orm_user(current_user)
+
+
+@router.put("/profile", response_model=UserResponse)
+async def update_profile(
+    body: ProfileUpdateRequest,
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
+):
+    if body.language is not None:
+        current_user.language_preference = body.language
+    if body.email is not None:
+        current_user.email = body.email
+    await db.flush()
     return UserResponse.from_orm_user(current_user)

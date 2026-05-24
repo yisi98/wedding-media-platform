@@ -1,0 +1,19 @@
+# Next.js
+.next/
+out/
+build/
+
+# Auto-generated
+next-env.d.ts
+
+# Dependencies
+node_modules/
+
+# Environment
+.env.local
+.env.*.local
+
+# Misc
+.DS_Store
+Thumbs.db
+*.log

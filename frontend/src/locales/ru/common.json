@@ -6,6 +6,7 @@
   "nav": {
     "gallery": "Галерея",
     "upload": "Загрузить",
+    "profile": "Профиль",
     "logout": "Выйти"
   },
   "auth": {
@@ -68,5 +69,16 @@
     "en": "English",
     "zh": "中文",
     "ru": "Русский"
+  },
+  "profile": {
+    "title": "Мой профиль",
+    "username": "Имя пользователя",
+    "email": "Email",
+    "emailPlaceholder": "your@email.com",
+    "language": "Язык интерфейса",
+    "save": "Сохранить",
+    "saving": "Сохранение…",
+    "saved": "Сохранено!",
+    "saveError": "Не удалось сохранить. Попробуйте ещё раз."
   }
 }
