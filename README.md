@@ -62,7 +62,7 @@ This project uses **agentic coding** with comprehensive documentation:
 ### Prerequisites
 - **uv** (Python package manager) - [Install](https://docs.astral.sh/uv/)
 - Node.js 20+
-- Docker Desktop
+- **Podman Desktop** (free Docker alternative) - [Install](https://podman-desktop.io/) OR Docker Engine (Linux)
 - Git
 
 **Note**: uv will automatically install Python 3.12 if needed.
@@ -73,9 +73,10 @@ This project uses **agentic coding** with comprehensive documentation:
 
 #### Quick Start:
 
-1. **Start infrastructure**
+1. **Start infrastructure** (using Podman - free alternative to Docker)
 ```powershell
-docker-compose up -d
+# See PODMAN_SETUP.md for installation
+podman-compose up -d   # or: docker-compose up -d
 ```
 
 2. **Backend setup**

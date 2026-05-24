@@ -9,21 +9,41 @@
    powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
    ```
 2. **Node.js 20+** - [Download](https://nodejs.org/)
-3. **Docker Desktop** - [Download](https://www.docker.com/products/docker-desktop/)
+3. **Container Runtime** (choose one):
+   - **Podman Desktop** (FREE, recommended) - [Download](https://podman-desktop.io/)
+   - Docker Engine (Linux only, free)
+   - ~~Docker Desktop~~ (requires paid license for commercial use)
 4. **Git** - [Download](https://git-scm.com/)
 
 ### Optional (for video processing):
 5. **FFmpeg** - [Download](https://ffmpeg.org/download.html)
 
-**Note**: `uv` will automatically install Python 3.12 if needed.
+**Notes**: 
+- `uv` will automatically install Python 3.12 if needed
+- Podman is 100% compatible with Docker commands (just alias `docker=podman`)
 
 ---
 
 ## Quick Start (5 minutes)
 
 ### 1. Start Infrastructure Services
+
+#### Option A: Using Podman (Recommended - FREE)
 ```powershell
-# From project root
+# Install Podman Desktop from https://podman-desktop.io/
+# After installation, start Podman machine (first time only)
+podman machine init
+podman machine start
+
+# Use podman-compose (install if needed)
+pip install podman-compose
+
+# Start services
+podman-compose up -d
+```
+
+#### Option B: Using Docker (if you already have it)
+```powershell
 docker-compose up -d
 ```
 
@@ -34,6 +54,10 @@ This starts:
 
 Verify services:
 ```powershell
+# Podman
+podman-compose ps
+
+# Docker
 docker-compose ps
 ```
 
@@ -203,22 +227,32 @@ npm run test:e2e
 
 ## Common Commands
 
-### Docker
+### Container Management (Podman/Docker)
 ```powershell
 # Start all services
-docker-compose up -d
+podman-compose up -d    # or: docker-compose up -d
 
 # Stop all services
-docker-compose down
+podman-compose down     # or: docker-compose down
 
 # View logs
-docker-compose logs -f
+podman-compose logs -f  # or: docker-compose logs -f
 
 # Restart a service
-docker-compose restart postgres
+podman-compose restart postgres  # or: docker-compose restart postgres
 
 # Remove all data (⚠️ destructive)
-docker-compose down -v
+podman-compose down -v  # or: docker-compose down -v
+
+# Check running containers
+podman ps               # or: docker ps
+```
+
+**Tip**: Create an alias for convenience:
+```powershell
+# PowerShell profile (~\Documents\PowerShell\Microsoft.PowerShell_profile.ps1)
+Set-Alias -Name docker -Value podman
+Set-Alias -Name docker-compose -Value podman-compose
 ```
 
 ### Backend
@@ -282,17 +316,21 @@ npm run format
 
 ## Troubleshooting
 
-### Docker Issues
+### Container Issues (Podman/Docker)
 
-**Problem**: Docker containers won't start
+**Problem**: Containers won't start
 ```powershell
-# Check Docker is running
-docker ps
+# Podman: Check machine is running
+podman machine list
+podman machine start
+
+# Check containers
+podman ps -a            # or: docker ps -a
 
 # Check logs
-docker-compose logs
+podman-compose logs     # or: docker-compose logs
 
-# Restart Docker Desktop
+# Restart Podman Desktop or Docker Desktop
 ```
 
 **Problem**: Port already in use

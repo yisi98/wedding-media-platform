@@ -6,12 +6,12 @@ requires-python = ">=3.12"
 dependencies = [
     "fastapi==0.109.0",
     "uvicorn[standard]==0.27.0",
-    "python-multipart==0.0.6",
+    "python-multipart==0.0.27",  # Fixed: CVE-2024-24762, CVE-2024-53981, CVE-2026-24486, CVE-2026-42561
     "sqlalchemy==2.0.25",
     "alembic==1.13.1",
     "asyncpg==0.29.0",
     "psycopg2-binary==2.9.9",
-    "python-jose[cryptography]==3.3.0",
+    "python-jose[cryptography]==3.4.0",  # Fixed: CVE-2024-33663 (CRITICAL)
     "passlib[bcrypt]==1.7.4",
     "python-dotenv==1.0.0",
     "redis==5.0.1",
@@ -20,7 +20,7 @@ dependencies = [
     "oss2==2.18.4",
     "celery==5.3.6",
     "flower==2.0.1",
-    "Pillow==10.2.0",
+    "Pillow==10.3.0",  # Fixed: CVE-2024-28219
     "python-magic==0.4.27",
     "ffmpeg-python==0.2.0",
     "Babel==2.14.0",
@@ -50,6 +50,9 @@ dev = [
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = []  # No packages yet - Phase 1 foundation only
 
 [tool.black]
 line-length = 100

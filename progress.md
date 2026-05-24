@@ -18,24 +18,27 @@
 ### Phase 1: Foundation & Documentation — ✅ COMPLETE
 - [x] Repository structure created
 - [x] Architecture docs (`docs/architecture/`)
-- [x] ADRs 001-003 written
+- [x] ADRs 001-005 written (tech stack, auth, storage, i18n, deduplication)
 - [x] Coding standards & testing strategy
 - [x] Core workflows (`.windsurf/workflows/`)
 - [x] Agent rules (`.windsurf/rules/`)
 - [x] `AGENTS.md` entry point
 - [x] Feature spec template
 - [x] API design doc
-- [x] CI workflow (`.github/workflows/ci.yml`)
+- [x] CI workflow (`.github/workflows/ci.yml`) - configured, checks optional until Phase 2
 - [x] Pre-commit hooks
 - [x] `.env.example` files for backend & frontend
 - [x] PR / issue templates
 - [x] Additional workflows (`/onboard`, `/write-tests`, `/create-adr`, `/refactor`)
-- [x] Product specification (`docs/PRODUCT_SPEC.md`)
+- [x] Product specification (`docs/PRODUCT_SPEC.md` + HTML version)
 - [x] README updated with actual requirements
-- [x] Update ADR-002 for password-only auth (no OAuth)
-- [x] Update ADR-003 for AliCloud OSS (not AWS S3)
-- [x] Create ADR-004 for i18n strategy (EN/ZH/RU)
-- [x] Create ADR-005 for duplicate detection strategy
+- [x] Security documentation (`SECURITY.md`)
+- [x] Git workflow guide (`GIT_GUIDE.md`)
+- [x] Development setup guide (`README_SETUP.md`)
+- [x] Docker Compose for local dev (PostgreSQL, Redis, MinIO)
+- [x] Podman setup guide (free Docker alternative)
+- [x] Python 3.12 + uv configuration
+- [x] Security vulnerabilities fixed (6 CVEs)
 
 ### Phase 2: Core Features Development — IN PROGRESS
 
@@ -278,6 +281,7 @@
 | 2026-05-24 | Multiple admin accounts supported | User input |
 | 2026-05-24 | AliCloud setup deferred until deployment phase | User decision |
 | 2026-05-24 | Hard deadline: September 15, 2026 (all complete) | User requirement |
+| 2026-05-24 | Security fixes: Updated 3 packages (6 CVEs fixed) | Security audit |
 
 ## Blocked / Waiting
 _None_
